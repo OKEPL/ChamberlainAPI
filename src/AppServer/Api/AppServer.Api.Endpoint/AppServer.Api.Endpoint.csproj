@@ -1,0 +1,154 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <BaseNuGetRuntimeIdentifier>win10-x86</BaseNuGetRuntimeIdentifier>
+    <TargetFrameworkProfile />
+    <AssemblyName>Chamberlain.AppServer.Api.Endpoint</AssemblyName>
+    <RootNamespace>Chamberlain.AppServer.Api.Endpoint</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>1701;1702;1705;612;618</NoWarn>
+    <DocumentationFile>bin\Debug\net462\AppServer.Api.Endpoint.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>bin\Release\net462\AppServer.Api.Endpoint.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="SettingsConnectionString.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="EndpointSystem.hocon" />
+    <None Remove="Properties\PublishProfiles\chamberlainapi - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\ChamberlainDemoVmDeploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EndpointSystem.hocon">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Akka.Logger.Serilog" Version="1.3.9" />
+    <PackageReference Include="Akka.Remote" Version="1.3.11" />
+    <PackageReference Include="Akka.Serialization.Hyperion" Version="1.3.11-beta" />
+    <PackageReference Include="dbup" Version="3.3.5" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization.Policy" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.8.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1" />
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="2.4.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
+    <PackageReference Include="StructureMap" Version="4.7.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
+    <None Include="SettingsConnectionString.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppServer.Api.Contracts\AppServer.Api.Contracts.csproj" />
+    <ProjectReference Include="..\AppServer.Api\AppServer.Api.csproj" />
+    <ProjectReference Include="..\Hubs\AppServer.Api.Hubs.Contracts\AppServer.Api.Hubs.Contracts.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AppServer.SettingsProvider">
+      <HintPath>..\..\..\..\packages\bin\AppServer.SettingsProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Common.Akka">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Common.Akka.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Common.Content">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Common.Content.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Common.Contracts">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Common.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Common.Settings">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Common.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Database.Persistency.Model">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Database.Persistency.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.ExternalServices.Email">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.ExternalServices.Email.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Hub.HubApp.Contracts">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Hub.HubApp.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Chamberlain.Plugins.HlsHandler">
+      <HintPath>..\..\..\..\packages\bin\Chamberlain.Plugins.HlsHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.StaticMethods">
+      <HintPath>..\..\..\..\packages\bin\Common.StaticMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="StructureMap">
+      <HintPath>..\..\..\..\packages\StructureMap.4.5.2\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="VoiceApp.Contracts">
+      <HintPath>..\..\..\..\packages\bin\VoiceApp.Contracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\PublishProfiles\FolderProfile.pubxml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /Y &quot;$(TargetDir)$(ProjectName).xml&quot; &quot;$(ProjectDir)\..\Tests\AppServer.Api.Endpoint.Tests\$(OutDir)\..\&quot;" />
+  </Target>
+</Project>

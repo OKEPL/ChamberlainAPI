@@ -1,0 +1,57 @@
+﻿akka {  
+	log-config-on-start = on
+	stdout-loglevel = DEBUG
+	loglevel = DEBUG
+
+	loggers = ["Akka.Logger.Serilog.SerilogLogger, Akka.Logger.Serilog"]
+
+    actor {
+		serializers {
+		  hyperion = "Akka.Serialization.HyperionSerializer, Akka.Serialization.Hyperion"
+		  bytes = "Akka.Serialization.ByteArraySerializer"
+		}
+		serialization-bindings {
+		  "System.Object" = hyperion
+		  "System.Byte[]" = bytes
+		}
+        provider = remote
+
+		debug {
+            receive = on
+            autoreceive = on
+            lifecycle = on
+            event-stream = on
+            unhandled = on
+          }
+
+		   release {
+            receive = on
+            autoreceive = on
+            lifecycle = on
+            event-stream = on
+            unhandled = on
+          }
+
+    }
+    remote {
+		 
+
+        dot-netty.tcp {
+            port = #port
+            hostname = #hostname
+			maximum-frame-size = 30000000b
+        }
+
+		watch-failure-detector {
+            threshold = 100
+            acceptable-heartbeat-pause = 60s
+        }
+
+        transport-failure-detector {
+            heartbeat-interval = 4s
+			acceptable-heartbeat-pause = 66s
+        }
+
+		prune-quarantine-marker-after = 20s
+    }
+}
